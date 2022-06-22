@@ -432,6 +432,7 @@ function JokesRoute() {
   }, "Get a random joke"), /* @__PURE__ */ React.createElement("p", null, "Here are a few more jokes to check out:"), /* @__PURE__ */ React.createElement("ul", null, data.jokeListItems.map((joke) => /* @__PURE__ */ React.createElement("li", {
     key: joke.id
   }, /* @__PURE__ */ React.createElement(import_react4.Link, {
+    prefetch: "intent",
     to: joke.id
   }, joke.name)))), /* @__PURE__ */ React.createElement(import_react4.Link, {
     to: "new",
@@ -452,7 +453,31 @@ __export(jokeId_exports, {
   meta: () => meta3
 });
 var import_node4 = require("@remix-run/node");
+var import_react6 = require("@remix-run/react");
+
+// app/components/joke.tsx
 var import_react5 = require("@remix-run/react");
+function JokeDisplay({
+  joke,
+  isOwner,
+  canDelete = true
+}) {
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", null, "Here's your hilarious joke:"), /* @__PURE__ */ React.createElement("p", null, joke.content), /* @__PURE__ */ React.createElement(import_react5.Link, {
+    to: "."
+  }, joke.name, " Permalink"), isOwner ? /* @__PURE__ */ React.createElement(import_react5.Form, {
+    method: "post"
+  }, /* @__PURE__ */ React.createElement("input", {
+    type: "hidden",
+    name: "_method",
+    value: "delete"
+  }), /* @__PURE__ */ React.createElement("button", {
+    type: "submit",
+    className: "button",
+    disabled: !canDelete
+  }, "Delete")) : null);
+}
+
+// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes\$jokeId.tsx
 var meta3 = ({
   data
 }) => {
@@ -508,23 +533,15 @@ var action2 = async ({ request, params }) => {
   return (0, import_node4.redirect)("/jokes");
 };
 function JokeRoute() {
-  const data = (0, import_react5.useLoaderData)();
-  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", null, "Here's your hilarious joke:"), /* @__PURE__ */ React.createElement("p", null, data.joke.content), /* @__PURE__ */ React.createElement(import_react5.Link, {
-    to: "."
-  }, data.joke.name, " Permalink"), data.isOwner ? /* @__PURE__ */ React.createElement("form", {
-    method: "post"
-  }, /* @__PURE__ */ React.createElement("input", {
-    type: "hidden",
-    name: "_method",
-    value: "delete"
-  }), /* @__PURE__ */ React.createElement("button", {
-    type: "submit",
-    className: "button"
-  }, "Delete")) : null);
+  const data = (0, import_react6.useLoaderData)();
+  return /* @__PURE__ */ React.createElement(JokeDisplay, {
+    joke: data.joke,
+    isOwner: data.isOwner
+  });
 }
 function CatchBoundary2() {
-  const caught = (0, import_react5.useCatch)();
-  const params = (0, import_react5.useParams)();
+  const caught = (0, import_react6.useCatch)();
+  const params = (0, import_react6.useParams)();
   switch (caught.status) {
     case 400: {
       return /* @__PURE__ */ React.createElement("div", {
@@ -546,8 +563,9 @@ function CatchBoundary2() {
     }
   }
 }
-function ErrorBoundary2() {
-  const { jokeId } = (0, import_react5.useParams)();
+function ErrorBoundary2({ error }) {
+  console.error(error);
+  const { jokeId } = (0, import_react6.useParams)();
   return /* @__PURE__ */ React.createElement("div", {
     className: "error-container"
   }, `There was an error loading joke by the id ${jokeId}. Sorry.`);
@@ -562,7 +580,7 @@ __export(jokes_exports2, {
   loader: () => loader5
 });
 var import_node5 = require("@remix-run/node");
-var import_react6 = require("@remix-run/react");
+var import_react7 = require("@remix-run/react");
 var loader5 = async () => {
   const count = await db.joke.count();
   const randomRowNumber = Math.floor(Math.random() * count);
@@ -579,13 +597,13 @@ var loader5 = async () => {
   return (0, import_node5.json)(data);
 };
 function JokesIndexRoute() {
-  const data = (0, import_react6.useLoaderData)();
-  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", null, "Here's a random joke:"), /* @__PURE__ */ React.createElement("p", null, data.randomJoke.content), /* @__PURE__ */ React.createElement(import_react6.Link, {
+  const data = (0, import_react7.useLoaderData)();
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", null, "Here's a random joke:"), /* @__PURE__ */ React.createElement("p", null, data.randomJoke.content), /* @__PURE__ */ React.createElement(import_react7.Link, {
     to: data.randomJoke.id
   }, '"', data.randomJoke.name, '" Permalink'));
 }
 function CatchBoundary3() {
-  const caught = (0, import_react6.useCatch)();
+  const caught = (0, import_react7.useCatch)();
   if (caught.status === 404) {
     return /* @__PURE__ */ React.createElement("div", {
       className: "error-container"
@@ -609,7 +627,7 @@ __export(new_exports, {
   loader: () => loader6
 });
 var import_node6 = require("@remix-run/node");
-var import_react7 = require("@remix-run/react");
+var import_react8 = require("@remix-run/react");
 var loader6 = async ({ request }) => {
   const userId = await getUserId(request);
   if (!userId) {
@@ -653,8 +671,20 @@ var action3 = async ({ request }) => {
 };
 function NewJokeRoute() {
   var _a, _b, _c, _d, _e, _f, _g, _h;
-  const actionData = (0, import_react7.useActionData)();
-  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", null, "Add your own hilarious joke"), /* @__PURE__ */ React.createElement("form", {
+  const actionData = (0, import_react8.useActionData)();
+  const transition = (0, import_react8.useTransition)();
+  if (transition.submission) {
+    const name = transition.submission.formData.get("name");
+    const content = transition.submission.formData.get("content");
+    if (typeof name === "string" && typeof content === "string" && !validateJokeContent(content) && !validateJokeName(name)) {
+      return /* @__PURE__ */ React.createElement(JokeDisplay, {
+        joke: { name, content },
+        isOwner: true,
+        canDelete: false
+      });
+    }
+  }
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", null, "Add your own hilarious joke"), /* @__PURE__ */ React.createElement(import_react8.Form, {
     method: "post"
   }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", null, "Name:", " ", /* @__PURE__ */ React.createElement("input", {
     type: "text",
@@ -684,16 +714,17 @@ function NewJokeRoute() {
   }, "Add"))));
 }
 function CatchBoundary4() {
-  const caught = (0, import_react7.useCatch)();
+  const caught = (0, import_react8.useCatch)();
   if (caught.status === 401) {
     return /* @__PURE__ */ React.createElement("div", {
       className: "error-container"
-    }, /* @__PURE__ */ React.createElement("p", null, "You must be logged in to create a joke."), /* @__PURE__ */ React.createElement(import_react7.Link, {
+    }, /* @__PURE__ */ React.createElement("p", null, "You must be logged in to create a joke."), /* @__PURE__ */ React.createElement(import_react8.Link, {
       to: "/login"
     }, "Login"));
   }
 }
-function ErrorBoundary4() {
+function ErrorBoundary4({ error }) {
+  console.error(error);
   return /* @__PURE__ */ React.createElement("div", {
     className: "error-container"
   }, "Something unexpected went wrong. Sorry about that.");
@@ -708,7 +739,7 @@ __export(login_exports, {
   meta: () => meta4
 });
 var import_node7 = require("@remix-run/node");
-var import_react8 = require("@remix-run/react");
+var import_react9 = require("@remix-run/react");
 
 // app/styles/login.css
 var login_default = "/build/_assets/login-LXAWGWXR.css";
@@ -799,14 +830,14 @@ var action4 = async ({ request }) => {
 };
 function Login() {
   var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
-  const actionData = (0, import_react8.useActionData)();
-  const [searchParams] = (0, import_react8.useSearchParams)();
+  const actionData = (0, import_react9.useActionData)();
+  const [searchParams] = (0, import_react9.useSearchParams)();
   return /* @__PURE__ */ React.createElement("div", {
     className: "container"
   }, /* @__PURE__ */ React.createElement("div", {
     className: "content",
     "data-light": ""
-  }, /* @__PURE__ */ React.createElement("h1", null, "Login"), /* @__PURE__ */ React.createElement("form", {
+  }, /* @__PURE__ */ React.createElement("h1", null, "Login"), /* @__PURE__ */ React.createElement(import_react9.Form, {
     method: "post"
   }, /* @__PURE__ */ React.createElement("input", {
     type: "hidden",
@@ -860,15 +891,15 @@ function Login() {
     className: "button"
   }, "Submit"))), /* @__PURE__ */ React.createElement("div", {
     className: "links"
-  }, /* @__PURE__ */ React.createElement("ul", null, /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react8.Link, {
+  }, /* @__PURE__ */ React.createElement("ul", null, /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react9.Link, {
     to: "/"
-  }, "Home")), /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react8.Link, {
+  }, "Home")), /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react9.Link, {
     to: "/jokes"
   }, "Jokes")))));
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { "version": "009b7c63", "entry": { "module": "/build/entry.client-X4KLK6LU.js", "imports": ["/build/_shared/chunk-PFZOZX5Z.js", "/build/_shared/chunk-6BO74FWO.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-IL6NZHGJ.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-H76A724H.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-Z7KR42CU.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/$jokeId": { "id": "routes/jokes/$jokeId", "parentId": "routes/jokes", "path": ":jokeId", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/$jokeId-NLC4LRDM.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/index": { "id": "routes/jokes/index", "parentId": "routes/jokes", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/jokes/index-ZLJNYIRL.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/new": { "id": "routes/jokes/new", "parentId": "routes/jokes", "path": "new", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/new-DSZFVJIS.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes[.]rss": { "id": "routes/jokes[.]rss", "parentId": "root", "path": "jokes.rss", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes[.]rss-T33ALAM5.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/login": { "id": "routes/login", "parentId": "root", "path": "login", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/login-FM75HKCR.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/logout": { "id": "routes/logout", "parentId": "root", "path": "logout", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/logout-CINGNZCE.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-009B7C63.js" };
+var assets_manifest_default = { "version": "c2533dbe", "entry": { "module": "/build/entry.client-RAZNCTJO.js", "imports": ["/build/_shared/chunk-ATMVBIIT.js", "/build/_shared/chunk-6BO74FWO.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-N7LGKJMB.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-LFM6GJA2.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-HJAW5CR4.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/$jokeId": { "id": "routes/jokes/$jokeId", "parentId": "routes/jokes", "path": ":jokeId", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/$jokeId-M2QSL4CL.js", "imports": ["/build/_shared/chunk-3CQX7H76.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/index": { "id": "routes/jokes/index", "parentId": "routes/jokes", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/jokes/index-VQ6OHNSM.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/new": { "id": "routes/jokes/new", "parentId": "routes/jokes", "path": "new", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/new-GBVI3CPB.js", "imports": ["/build/_shared/chunk-3CQX7H76.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes[.]rss": { "id": "routes/jokes[.]rss", "parentId": "root", "path": "jokes.rss", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes[.]rss-T33ALAM5.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/login": { "id": "routes/login", "parentId": "root", "path": "login", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/login-NWPOZ7HB.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/logout": { "id": "routes/logout", "parentId": "root", "path": "logout", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/logout-CINGNZCE.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-C2533DBE.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports };
