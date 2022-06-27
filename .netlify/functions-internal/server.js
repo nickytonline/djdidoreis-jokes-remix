@@ -82,7 +82,7 @@ function handleRequest(request, responseStatusCode, responseHeaders, remixContex
   });
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\root.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/root.tsx
 var root_exports = {};
 __export(root_exports, {
   CatchBoundary: () => CatchBoundary,
@@ -94,15 +94,15 @@ __export(root_exports, {
 var import_react2 = require("@remix-run/react");
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-N7QI7LWZ.css";
+var global_default = "/build/_assets/global-YOJIA7J5.css";
 
 // app/styles/global-medium.css
-var global_medium_default = "/build/_assets/global-medium-67B7MP26.css";
+var global_medium_default = "/build/_assets/global-medium-DRHJR3JT.css";
 
 // app/styles/global-large.css
-var global_large_default = "/build/_assets/global-large-VVLXXXOD.css";
+var global_large_default = "/build/_assets/global-large-NKTQAWDZ.css";
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\root.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/root.tsx
 var links = () => {
   return [
     { rel: "stylesheet", href: global_default },
@@ -160,7 +160,7 @@ function ErrorBoundary({ error }) {
   }, /* @__PURE__ */ React.createElement("h1", null, "App Error"), /* @__PURE__ */ React.createElement("pre", null, error.message)));
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes[.]rss.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes[.]rss.tsx
 var jokes_rss_exports = {};
 __export(jokes_rss_exports, {
   loader: () => loader
@@ -178,7 +178,7 @@ if (false) {
   db = global.__db;
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes[.]rss.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes[.]rss.tsx
 function escapeCdata(s) {
   return s.replace(/\]\]>/g, "]]]]><![CDATA[>");
 }
@@ -229,7 +229,7 @@ var loader = async ({ request }) => {
   });
 };
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\logout.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/logout.tsx
 var logout_exports = {};
 __export(logout_exports, {
   action: () => action,
@@ -325,7 +325,7 @@ async function createUserSession(userId, redirectTo) {
   });
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\logout.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/logout.tsx
 var action = async ({ request }) => {
   return logout(request);
 };
@@ -333,7 +333,7 @@ var loader2 = async () => {
   return (0, import_node2.redirect)("/");
 };
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\index.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/index.tsx
 var routes_exports = {};
 __export(routes_exports, {
   default: () => Index,
@@ -343,9 +343,9 @@ __export(routes_exports, {
 var import_react3 = require("@remix-run/react");
 
 // app/styles/index.css
-var styles_default = "/build/_assets/index-3XA5Q6C3.css";
+var styles_default = "/build/_assets/index-LQJHUV2J.css";
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\index.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/index.tsx
 var links2 = () => {
   return [{ rel: "stylesheet", href: styles_default }];
 };
@@ -363,7 +363,7 @@ function Index() {
   }, "Read Jokes"))))));
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes.tsx
 var jokes_exports = {};
 __export(jokes_exports, {
   default: () => JokesRoute,
@@ -374,9 +374,9 @@ var import_node3 = require("@remix-run/node");
 var import_react4 = require("@remix-run/react");
 
 // app/styles/jokes.css
-var jokes_default = "/build/_assets/jokes-PXQQOGP4.css";
+var jokes_default = "/build/_assets/jokes-MGLBGUHK.css";
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes.tsx
 var links3 = () => {
   return [{ rel: "stylesheet", href: jokes_default }];
 };
@@ -442,7 +442,7 @@ function JokesRoute() {
   }, /* @__PURE__ */ React.createElement(import_react4.Outlet, null)))));
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes\$jokeId.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes/$jokeId.tsx
 var jokeId_exports = {};
 __export(jokeId_exports, {
   CatchBoundary: () => CatchBoundary2,
@@ -477,7 +477,7 @@ function JokeDisplay({
   }, "Delete")) : null);
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes\$jokeId.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes/$jokeId.tsx
 var meta3 = ({
   data
 }) => {
@@ -571,7 +571,7 @@ function ErrorBoundary2({ error }) {
   }, `There was an error loading joke by the id ${jokeId}. Sorry.`);
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes\index.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes/index.tsx
 var jokes_exports2 = {};
 __export(jokes_exports2, {
   CatchBoundary: () => CatchBoundary3,
@@ -617,7 +617,7 @@ function ErrorBoundary3() {
   }, "I did a whoopsies.");
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\jokes\new.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/jokes/new.tsx
 var new_exports = {};
 __export(new_exports, {
   CatchBoundary: () => CatchBoundary4,
@@ -730,7 +730,7 @@ function ErrorBoundary4({ error }) {
   }, "Something unexpected went wrong. Sorry about that.");
 }
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\login.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/login.tsx
 var login_exports = {};
 __export(login_exports, {
   action: () => action4,
@@ -742,9 +742,9 @@ var import_node7 = require("@remix-run/node");
 var import_react9 = require("@remix-run/react");
 
 // app/styles/login.css
-var login_default = "/build/_assets/login-LXAWGWXR.css";
+var login_default = "/build/_assets/login-TB27ASMI.css";
 
-// route:C:\Users\Atratus\Documents\Dev\jokes-app-deploy\jokes-remix\app\routes\login.tsx
+// route:/Users/nicktaylor/dev/issues/djdidoreis-jokes-remix/app/routes/login.tsx
 var links4 = () => {
   return [{ rel: "stylesheet", href: login_default }];
 };
@@ -899,7 +899,7 @@ function Login() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { "version": "c2533dbe", "entry": { "module": "/build/entry.client-RAZNCTJO.js", "imports": ["/build/_shared/chunk-ATMVBIIT.js", "/build/_shared/chunk-6BO74FWO.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-N7LGKJMB.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-LFM6GJA2.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-HJAW5CR4.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/$jokeId": { "id": "routes/jokes/$jokeId", "parentId": "routes/jokes", "path": ":jokeId", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/$jokeId-M2QSL4CL.js", "imports": ["/build/_shared/chunk-3CQX7H76.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/index": { "id": "routes/jokes/index", "parentId": "routes/jokes", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/jokes/index-VQ6OHNSM.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/new": { "id": "routes/jokes/new", "parentId": "routes/jokes", "path": "new", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/new-GBVI3CPB.js", "imports": ["/build/_shared/chunk-3CQX7H76.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes[.]rss": { "id": "routes/jokes[.]rss", "parentId": "root", "path": "jokes.rss", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes[.]rss-T33ALAM5.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/login": { "id": "routes/login", "parentId": "root", "path": "login", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/login-NWPOZ7HB.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/logout": { "id": "routes/logout", "parentId": "root", "path": "logout", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/logout-CINGNZCE.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-C2533DBE.js" };
+var assets_manifest_default = { "version": "44a38ff9", "entry": { "module": "/build/entry.client-VDNJA4BA.js", "imports": ["/build/_shared/chunk-ZKV7KRPB.js", "/build/_shared/chunk-6BO74FWO.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-2KLUJOI4.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-RBWJIL7J.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-BZPHYSOF.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/$jokeId": { "id": "routes/jokes/$jokeId", "parentId": "routes/jokes", "path": ":jokeId", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/$jokeId-XONNGN5O.js", "imports": ["/build/_shared/chunk-KSDFRCVB.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/index": { "id": "routes/jokes/index", "parentId": "routes/jokes", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/jokes/index-LRH7NE5Y.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes/new": { "id": "routes/jokes/new", "parentId": "routes/jokes", "path": "new", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/new-EYRS5JBK.js", "imports": ["/build/_shared/chunk-KSDFRCVB.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/jokes[.]rss": { "id": "routes/jokes[.]rss", "parentId": "root", "path": "jokes.rss", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes[.]rss-VWNT5JCC.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/login": { "id": "routes/login", "parentId": "root", "path": "login", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/login-LAASFBM4.js", "imports": ["/build/_shared/chunk-GK56CZJG.js", "/build/_shared/chunk-36JN244Y.js"], "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/logout": { "id": "routes/logout", "parentId": "root", "path": "logout", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/logout-WG7M3IEV.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-44A38FF9.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports };
